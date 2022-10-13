@@ -2,15 +2,11 @@
 
 Manage income, expenses, savings, track data and generate reports
 
-## Getting Started
+## What this app provides?
 
-This project is a starting point for a Flutter application.
+Biometrics authentication for privacy
+(Fingerprint/ Face ID)
 
-A few resources to get you started if this is your first Flutter project:
+Dark/Light Mode
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
