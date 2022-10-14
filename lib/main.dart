@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:money_manager/pages/fingerprint_page.dart';
 import 'package:money_manager/utilities/my_themes.dart';
+import 'package:money_manager/utilities/route_generator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
-      home: FingerprintPage(),
+      initialRoute: '/authenticate',
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

@@ -64,7 +64,7 @@ class _FingerprintPageState extends State<FingerprintPage> {
       //after the user is authenticated
       autherized = authenticated? "Autherization Successful" : "Failed to authenticate";
       if(authenticated){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.pushNamed(context, '/');
       }
       print(autherized);
     });
