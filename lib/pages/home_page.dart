@@ -20,8 +20,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     Color themeColor = Theme.of(context).scaffoldBackgroundColor;
-    Color mainColor = Theme.of(context).colorScheme.onBackground;
-    Color txtColor = mainColor.withOpacity(0.6);
 
 
     final items = <Widget>[

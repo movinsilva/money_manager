@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class PieData {
 
   static List<Data> data = [
-    Data(name: 'Expenses', percent: 70, color: Colors.red),
-    Data(name: 'Savings', percent: 30, color: Colors.green),
+    Data(name: 'Expenses', percent: 70, color: const Color(0xffff5182)),
+    Data(name: 'Savings', percent: 30, color: const Color(0xff53fdd7)),
   ];
 
 

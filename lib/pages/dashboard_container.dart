@@ -1,6 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:money_manager/charts/pie_chart_section.dart';
+import 'package:money_manager/charts/savings_bar_chart.dart';
 import 'package:provider/provider.dart';
 
 Color green30 = Colors.green.withOpacity(0.3);
@@ -44,7 +45,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
               borderRadius: BorderRadius.circular(25),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.green.withOpacity(0.3),
+                  color: const Color(0xff53fdd7).withOpacity(0.3),
                   spreadRadius: 5,
                   blurRadius: 7,
                   offset: Offset(0, 3), // changes position of shadow
@@ -60,7 +61,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
                       color: txtColor,
                     ),),
                     SizedBox(width: 10,),
-                    Text("25 450", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600, color: Colors.green),)
+                    Text("25 450", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600, color: const Color(0xff53fdd7)),)
                   ],
                 ),
                 SizedBox(height: 25,),
@@ -86,7 +87,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
                             Text("2 500", style: TextStyle(
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.green.withOpacity(0.6)
+                                color: const Color(0xff53fdd7).withOpacity(0.6)
                             ),)
                           ],
                         ),
@@ -113,7 +114,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
                             Text("21 950", style: TextStyle(
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.green.withOpacity(0.6)
+                                color: const Color(0xff53fdd7).withOpacity(0.6)
                             ),)
                           ],
                         )
@@ -137,7 +138,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
                     height: 150,
                     child: PieChart(
                         PieChartData(
-                            sections: getSections(),
+                            sections: getSections(themeColor),
                             sectionsSpace: 5,
                             pieTouchData: PieTouchData(
                                 touchCallback: (event, pieTouchResponse) {
@@ -158,6 +159,13 @@ class _DashboardContainerState extends State<DashboardContainer> {
                   SizedBox(height: 50,),
                   breakerLine(),
                   SizedBox(height: 20,),
+
+                  SavingsBarChart(),
+
+                  SizedBox(height: 50,),
+                  breakerLine(),
+                  SizedBox(height: 20,),
+
                   Text("Top spending of the month"),
                   SizedBox(height: 40,),
                   spendingTile(),
@@ -199,17 +207,18 @@ Container spendingTile() {
           ],
         ),
         Spacer(),
-        Text("32%", style: TextStyle(color: Colors.red),)
+        const Text("32%", style: TextStyle(color: Color(0xffff5182)),)
       ],),
   );
 }
 
-Row breakerLine() {
+Widget breakerLine() {
   return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Container(
         height: 1,
-        width: 150,
+        width: 125,
         color: green30,
       ),
       SizedBox(width: 4,),
@@ -220,7 +229,7 @@ Row breakerLine() {
       SizedBox(width: 4,),
       Container(
         height: 1,
-        width: 150,
+        width: 125,
         color: green30,
       ),
 
