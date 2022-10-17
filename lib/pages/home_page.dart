@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: CurvedNavigationBar(
         items: items,
         index: index,
-        color: Colors.green.withOpacity(0.07),
+        color: const Color(0xff53fdd7).withOpacity(0.5),
         backgroundColor: themeColor,
         onTap: (index) => setState(() => this.index = index),
       ),

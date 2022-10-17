@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
-      initialRoute: '/',
+      initialRoute: '/authenticate',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

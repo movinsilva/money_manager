@@ -11,10 +11,10 @@ List<PieChartSectionData> getSections(Color themeColor) => PieData.data.asMap().
     titleStyle: TextStyle(
       fontSize: 10,
     ),
-    radius: 30,
+    radius: 20,
     borderSide: BorderSide(color: data.color,width: 1),
-    badgeWidget: Text("${data.name} \n   4510", style: TextStyle(color: data.color, fontSize: 11),),
-    badgePositionPercentageOffset: 1.7
+    badgeWidget: Text("${data.name} \n     4510", style: TextStyle(color: data.color, fontSize: 11),),
+    badgePositionPercentageOffset: 2.3
   );
   return MapEntry(index, value);
 

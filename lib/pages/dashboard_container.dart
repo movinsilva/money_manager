@@ -4,7 +4,7 @@ import 'package:money_manager/charts/pie_chart_section.dart';
 import 'package:money_manager/charts/savings_bar_chart.dart';
 import 'package:provider/provider.dart';
 
-Color green30 = Colors.green.withOpacity(0.3);
+Color green30 = const Color(0xff53fdd7).withOpacity(0.5);
 
 class DashboardContainer extends StatefulWidget {
   const DashboardContainer({Key? key}) : super(key: key);
@@ -135,7 +135,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
                   Text("Expenses Analysis"),
                   SizedBox(height: 40,),
                   SizedBox(
-                    height: 150,
+                    height: 120,
                     child: PieChart(
                         PieChartData(
                             sections: getSections(themeColor),
@@ -162,15 +162,26 @@ class _DashboardContainerState extends State<DashboardContainer> {
 
                   SavingsBarChart(),
 
-                  SizedBox(height: 50,),
+                  SizedBox(height: 20,),
                   breakerLine(),
                   SizedBox(height: 20,),
 
                   Text("Top spending of the month"),
                   SizedBox(height: 40,),
-                  spendingTile(),
-                  spendingTile(),
-                  spendingTile(),
+                  spendingTile(mainColor.withOpacity(0.8)),
+                  spendingTile(mainColor.withOpacity(0.8)),
+                  spendingTile(mainColor.withOpacity(0.8)),
+
+                  SizedBox(height: 20,),
+                  breakerLine(),
+
+                  SizedBox(height: 30,),
+
+                  Text("Most Recent Transactions"),
+                  SizedBox(height: 40,),
+                  spendingTile(mainColor.withOpacity(0.8)),
+                  spendingTile(mainColor.withOpacity(0.8)),
+                  spendingTile(mainColor.withOpacity(0.8)),
                 ],
               ),
             ),
@@ -181,60 +192,66 @@ class _DashboardContainerState extends State<DashboardContainer> {
       ),
     );
   }
-}
 
 
-Container spendingTile() {
-  return Container(
-    margin: const EdgeInsets.only(bottom: 20, top: 0),
-    child: Row(
+  Container spendingTile(Color txtColor) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20, top: 0),
+      child: Row(
+        children: [
+          Icon(Icons.book,
+            color: Colors.blue,
+            size: 30,),
+          SizedBox(
+            width: 20,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Stationery", style: TextStyle(
+                  fontSize: 16, color: txtColor,
+              ),),
+              Text("Rs. 1510", style: TextStyle(
+                fontSize: 12, color: txtColor,
+              ),),
+            ],
+          ),
+          Spacer(),
+          const Text("32%", style: TextStyle(color: Color(0xffff5182)),)
+        ],),
+    );
+  }
+
+  Widget breakerLine() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(Icons.book,
-          color: Colors.blue,
-          size: 30,),
-        SizedBox(
-          width: 20,
+        Container(
+          height: 1,
+          width: 125,
+          color: green30,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Stationery", style: TextStyle(
-                fontSize: 16
-            ),),
-            Text("Rs. 1510", style: TextStyle(
-              fontSize: 12,
-            ),),
-          ],
+        SizedBox(width: 4,),
+        Icon(Icons.circle, color: green30, size: 10,),
+        Icon(Icons.circle, color: green30, size: 10,),
+        Icon(Icons.circle, color: green30, size: 10,),
+        Icon(Icons.circle, color: green30, size: 10,),
+        SizedBox(width: 4,),
+        Container(
+          height: 1,
+          width: 125,
+          color: green30,
         ),
-        Spacer(),
-        const Text("32%", style: TextStyle(color: Color(0xffff5182)),)
-      ],),
-  );
+
+      ],
+    );
+  }
+
+
+
 }
 
-Widget breakerLine() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Container(
-        height: 1,
-        width: 125,
-        color: green30,
-      ),
-      SizedBox(width: 4,),
-      Icon(Icons.circle, color: green30, size: 10,),
-      Icon(Icons.circle, color: green30, size: 10,),
-      Icon(Icons.circle, color: green30, size: 10,),
-      Icon(Icons.circle, color: green30, size: 10,),
-      SizedBox(width: 4,),
-      Container(
-        height: 1,
-        width: 125,
-        color: green30,
-      ),
 
-    ],
-  );
-}
+
 
 

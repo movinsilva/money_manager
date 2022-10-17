@@ -9,9 +9,9 @@ class SavingsBarChart extends StatefulWidget {
 }
 
 class _SavingsBarChartState extends State<SavingsBarChart> {
-  final Color leftBarColor = const Color(0xff53fdd7);
+  final Color leftBarColor = const Color(0xFF43A7FF);
   final Color rightBarColor = const Color(0xffff5182);
-  final Color incomeBarColor = Colors.blue;
+  final Color incomeBarColor = const Color(0xff53fdd7);
   final double width = 7;
 
   late List<BarChartGroupData> rawBarGroups;
@@ -140,8 +140,26 @@ class _SavingsBarChartState extends State<SavingsBarChart> {
                 ),
               ),
               const SizedBox(
-                height: 12,
+                height: 18,
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.circle,size:10, color: Colors.blue,),
+                  SizedBox(width: 4,),
+                  Text("Income", style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6),),),
+                  SizedBox(width: 20,),
+                  Icon(Icons.circle,size:10, color:  Color(0xffff5182),),
+                  SizedBox(width: 4,),
+                  Text("Expenses", style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6),),),
+                  SizedBox(width: 20,),
+                  Icon(Icons.circle,size:10, color: Color(0xff53fdd7),),
+                  SizedBox(width: 4,),
+                  Text("Savings", style: TextStyle(fontSize: 10, color: Theme.of(context).colorScheme.onBackground.withOpacity(0.6),),),
+                  SizedBox(width: 20,),
+
+                ],
+              )
             ],
           ),
         ),
