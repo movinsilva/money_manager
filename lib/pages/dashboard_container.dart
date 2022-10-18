@@ -2,9 +2,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:money_manager/charts/pie_chart_section.dart';
 import 'package:money_manager/charts/savings_bar_chart.dart';
+import 'package:money_manager/utilities/my_themes.dart';
 import 'package:provider/provider.dart';
 
-Color green30 = const Color(0xff53fdd7).withOpacity(0.5);
 
 class DashboardContainer extends StatefulWidget {
   const DashboardContainer({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
               borderRadius: BorderRadius.circular(25),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xff53fdd7).withOpacity(0.3),
+                  color: MyThemes.tColor.withOpacity(0.3),
                   spreadRadius: 5,
                   blurRadius: 7,
                   offset: Offset(0, 3), // changes position of shadow
@@ -114,7 +114,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
                             Text("21 950", style: TextStyle(
                                 fontSize: 19,
                                 fontWeight: FontWeight.bold,
-                                color: const Color(0xff53fdd7).withOpacity(0.6)
+                                color: MyThemes.tColor.withOpacity(0.6)
                             ),)
                           ],
                         )
@@ -229,18 +229,18 @@ class _DashboardContainerState extends State<DashboardContainer> {
         Container(
           height: 1,
           width: 125,
-          color: green30,
+          color: MyThemes.tColor,
         ),
         SizedBox(width: 4,),
-        Icon(Icons.circle, color: green30, size: 10,),
-        Icon(Icons.circle, color: green30, size: 10,),
-        Icon(Icons.circle, color: green30, size: 10,),
-        Icon(Icons.circle, color: green30, size: 10,),
+        Icon(Icons.circle, color: MyThemes.tColor, size: 10,),
+        Icon(Icons.circle, color: MyThemes.tColor, size: 10,),
+        Icon(Icons.circle, color: MyThemes.tColor, size: 10,),
+        Icon(Icons.circle, color: MyThemes.tColor, size: 10,),
         SizedBox(width: 4,),
         Container(
           height: 1,
           width: 125,
-          color: green30,
+          color: MyThemes.tColor,
         ),
 
       ],
