@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:money_manager/data/pie_chart_data.dart';
 import 'package:money_manager/pages/dashboard_container.dart';
 import 'package:money_manager/pages/settings_container.dart';
+import 'package:money_manager/pages/transactions_container.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,6 +48,8 @@ Widget bottomNav(int i) {
   switch(i) {
     case 0:
       return DashboardContainer();
+    case 1:
+      return TransactionsContainer();
     case 4:
       return SettingContainer();
     default:

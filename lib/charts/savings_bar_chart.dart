@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:money_manager/utilities/my_themes.dart';
 
 class SavingsBarChart extends StatefulWidget {
   const SavingsBarChart({Key? key}) : super(key: key);
@@ -9,9 +10,6 @@ class SavingsBarChart extends StatefulWidget {
 }
 
 class _SavingsBarChartState extends State<SavingsBarChart> {
-  final Color leftBarColor = const Color(0xFF43A7FF);
-  final Color rightBarColor = const Color(0xffff5182);
-  final Color incomeBarColor = const Color(0xff53fdd7);
   final double width = 7;
 
   late List<BarChartGroupData> rawBarGroups;
@@ -216,17 +214,17 @@ class _SavingsBarChartState extends State<SavingsBarChart> {
       barRods: [
         BarChartRodData(
           toY: y1,
-          color: leftBarColor,
+          color: MyThemes.inflowColor,
           width: width,
         ),
         BarChartRodData(
           toY: y2,
-          color: rightBarColor,
+          color: MyThemes.outflowColor,
           width: width,
         ),
         BarChartRodData(
           toY: y3,
-          color: incomeBarColor,
+          color: MyThemes.mColor,
           width: width,
         ),
       ],
