@@ -16,6 +16,7 @@ class AddTransaction extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
       child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             Align(alignment: Alignment.topLeft, child: Text("Let's add a transaction,", style: TextStyle(
@@ -117,6 +118,36 @@ class AddTransaction extends StatelessWidget {
               ),
             ),
 
+            SizedBox(height: 15,),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: MyThemes.tColor.withOpacity(0.1)
+              ),
+              child: Row(
+                children: [
+                  Icon(Icons.date_range_outlined, color: txtColor,),
+                  SizedBox(width: 20,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Select Date",
+                        style: TextStyle(
+                          color: txtColor,
+                          fontSize: 16,
+                        ),),
+                      Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        height: 0.5,
+                        width: width*0.65,
+                        color: txtColor,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
 
             SizedBox(height: 15,),
             Container(

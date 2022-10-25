@@ -130,6 +130,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
           ),
           Expanded(
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   Text("Expenses Analysis"),

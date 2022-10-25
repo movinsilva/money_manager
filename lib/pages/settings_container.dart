@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:money_manager/utilities/bottom_nav_info.dart';
 import 'package:money_manager/utilities/my_themes.dart';
+import 'package:money_manager/utilities/route_generator.dart';
+import 'package:provider/provider.dart';
 
 class SettingContainer extends StatelessWidget {
   const SettingContainer({Key? key}) : super(key: key);
@@ -48,19 +51,25 @@ class SettingContainer extends StatelessWidget {
           Expanded(child: ListView.builder(
               itemCount: 6,
               itemBuilder: (context, index) {
-            return Container(
-              decoration: BoxDecoration(
-                color: MyThemes.tColor.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-              child: Row(
-                children: [
-                  Icon(iconList[index]),
-                  SizedBox(width: 20,),
-                  Text(settingsItems[index])
-                ],
+            return InkWell(
+              onTap: (){
+                var bottomNavInfo = Provider.of<BottomNavInfo>(context, listen: false);
+                bottomNavInfo.updateSubIndex(1);
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  color: MyThemes.tColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                child: Row(
+                  children: [
+                    Icon(iconList[index]),
+                    SizedBox(width: 20,),
+                    Text(settingsItems[index])
+                  ],
+                ),
               ),
             );
           }))

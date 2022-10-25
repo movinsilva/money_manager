@@ -7,7 +7,10 @@ import 'package:money_manager/pages/add_transaction.dart';
 import 'package:money_manager/pages/dashboard_container.dart';
 import 'package:money_manager/pages/expect_container.dart';
 import 'package:money_manager/pages/settings_container.dart';
+import 'package:money_manager/pages/settings_pages/about_page.dart';
 import 'package:money_manager/pages/transactions_container.dart';
+import 'package:money_manager/utilities/bottom_nav_info.dart';
+import 'package:money_manager/utilities/route_generator.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,7 +21,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int index = 2;
+
   @override
   Widget build(BuildContext context) {
 
@@ -33,20 +36,30 @@ class _HomePageState extends State<HomePage> {
       Icon(Icons.settings)
     ];
 
-    return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-        items: items,
-        index: index,
-        color: const Color(0xff53fdd7).withOpacity(0.5),
-        backgroundColor: themeColor,
-        onTap: (index) => setState(() => this.index = index),
+    return ChangeNotifierProvider(
+      create: (context) => BottomNavInfo(),
+      child: Consumer<BottomNavInfo>(
+        builder: (context, data, child){
+          return Scaffold(
+            bottomNavigationBar: CurvedNavigationBar(
+              items: items,
+              index: data.getBIndex(),
+              color: const Color(0xff53fdd7).withOpacity(0.5),
+              backgroundColor: themeColor,
+              onTap: (index) {
+                //var bottomNavInfo = Provider.of<BottomNavInfo>(context, listen: false);
+                data.updateBIndex(index);
+              },
+            ),
+            body: bottomNav(data.getBIndex(), data.getSubIndex()),
+          );
+        },
       ),
-      body: bottomNav(index),
     );
   }
 }
 
-Widget bottomNav(int i) {
+Widget bottomNav(int i, int k) {
   switch(i) {
     case 0:
       return DashboardContainer();
@@ -57,7 +70,15 @@ Widget bottomNav(int i) {
     case 3:
       return ExpectContainer();
     case 4:
-      return SettingContainer();
+      switch(k){
+        case 1:
+          return AboutPage();
+        default:
+          return SettingContainer();
+      }
+
+    case 5:
+      return AboutPage();
     default:
       return DashboardContainer();
   }
