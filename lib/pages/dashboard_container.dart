@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:money_manager/charts/pie_chart_section.dart';
 import 'package:money_manager/charts/savings_bar_chart.dart';
+import 'package:money_manager/data/global_data.dart';
 import 'package:money_manager/utilities/my_themes.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +29,7 @@ class _DashboardContainerState extends State<DashboardContainer> {
       padding: const EdgeInsets.only(top: 60, left: 30, right: 30),
       child: Column(
         children: [
-          Align(alignment: Alignment.topLeft, child: Text("Welcome Movin,", style: TextStyle(
+          Align(alignment: Alignment.topLeft, child: Text("Welcome ${GlobalData.nickName},", style: TextStyle(
             fontSize: 23,
             fontWeight: FontWeight.bold,
             color: mainColor.withOpacity(0.7),

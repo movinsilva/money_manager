@@ -8,6 +8,7 @@ import 'package:money_manager/pages/dashboard_container.dart';
 import 'package:money_manager/pages/expect_container.dart';
 import 'package:money_manager/pages/settings_container.dart';
 import 'package:money_manager/pages/settings_pages/about_page.dart';
+import 'package:money_manager/pages/settings_pages/account_settings_page.dart';
 import 'package:money_manager/pages/transactions_container.dart';
 import 'package:money_manager/utilities/bottom_nav_info.dart';
 import 'package:money_manager/utilities/route_generator.dart';
@@ -71,7 +72,9 @@ Widget bottomNav(int i, int k) {
       return ExpectContainer();
     case 4:
       switch(k){
-        case 1:
+        case 2:
+          return AccountSettingsPage();
+        case 6:
           return AboutPage();
         default:
           return SettingContainer();

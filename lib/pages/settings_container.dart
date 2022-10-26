@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:money_manager/database/db_helper.dart';
+import 'package:money_manager/model/account_model.dart';
 import 'package:money_manager/utilities/bottom_nav_info.dart';
 import 'package:money_manager/utilities/my_themes.dart';
 import 'package:money_manager/utilities/route_generator.dart';
@@ -52,9 +54,15 @@ class SettingContainer extends StatelessWidget {
               itemCount: 6,
               itemBuilder: (context, index) {
             return InkWell(
-              onTap: (){
+              onTap: ()async{
+
+                List<Map<String, dynamic>> k = await DbHelper.instance.queryAll(tableUser);
+                print("query all: ");
+                print(k);
+
                 var bottomNavInfo = Provider.of<BottomNavInfo>(context, listen: false);
-                bottomNavInfo.updateSubIndex(1);
+                bottomNavInfo.updateSubIndex(index+1);
+
               },
               child: Container(
                 decoration: BoxDecoration(

@@ -50,6 +50,10 @@ ChangeNotifierProvider(
 
 
 
-
+int k = await DbHelper.instance.insert({
+                  'name': 'Movin Silva',
+                  'nick_name': 'Movin',
+                  'email': 'movinpinsara@gmail.com'
+                });
 
  */
