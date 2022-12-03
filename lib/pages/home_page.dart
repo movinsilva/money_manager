@@ -37,25 +37,21 @@ class _HomePageState extends State<HomePage> {
       Icon(Icons.settings)
     ];
 
-    return ChangeNotifierProvider(
-      create: (context) => BottomNavInfo(),
-      child: Consumer<BottomNavInfo>(
-        builder: (context, data, child){
-          return Scaffold(
-            bottomNavigationBar: CurvedNavigationBar(
-              items: items,
-              index: data.getBIndex(),
-              color: const Color(0xff53fdd7).withOpacity(0.5),
-              backgroundColor: themeColor,
-              onTap: (index) {
-                //var bottomNavInfo = Provider.of<BottomNavInfo>(context, listen: false);
-                data.updateBIndex(index);
-              },
-            ),
-            body: bottomNav(data.getBIndex(), data.getSubIndex()),
-          );
-        },
-      ),
+    return Consumer<BottomNavInfo>(
+      builder: (context, data, child){
+        return Scaffold(
+          bottomNavigationBar: CurvedNavigationBar(
+            items: items,
+            index: data.getBIndex(),
+            color: const Color(0xff53fdd7).withOpacity(0.5),
+            backgroundColor: themeColor,
+            onTap: (index) {
+              data.updateBIndex(index);
+            },
+          ),
+          body: bottomNav(data.getBIndex(), data.getSubIndex()),
+        );
+      },
     );
   }
 }
@@ -67,6 +63,10 @@ Widget bottomNav(int i, int k) {
     case 1:
       return TransactionsContainer();
     case 2:
+      switch (k) {
+        case 1:
+
+      }
       return AddTransaction();
     case 3:
       return ExpectContainer();

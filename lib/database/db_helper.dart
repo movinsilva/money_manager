@@ -47,10 +47,10 @@ class DbHelper{
 
   }
 
-  Future<int> insert(Map<String, dynamic> row, String tableName) async{
+  Future<int> insert(AccountModel model, String tableName) async{
     Database db = await instance.database;
-    print('value to be inserted $row');
-    return await db.insert(tableName, row);
+    print('value to be inserted ${model.toJson()}');
+    return await db.insert(tableName, model.toJson());
 
   }
 

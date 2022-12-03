@@ -29,11 +29,17 @@ class _DashboardContainerState extends State<DashboardContainer> {
       padding: const EdgeInsets.only(top: 60, left: 30, right: 30),
       child: Column(
         children: [
-          Align(alignment: Alignment.topLeft, child: Text("Welcome ${GlobalData.nickName},", style: TextStyle(
-            fontSize: 23,
-            fontWeight: FontWeight.bold,
-            color: mainColor.withOpacity(0.7),
-          ),)),
+          Align(alignment: Alignment.topLeft, child: Consumer<GlobalData>(
+            builder: (context, data, child) {
+              return Text("Welcome ${data.nickName},", style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
+                color: mainColor.withOpacity(0.7),
+              ),);
+            },
+
+          ),
+          ),
           SizedBox(height: 30,),
 
           // Main Box of information

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:money_manager/data/global_data.dart';
+import 'package:money_manager/database/db_helper.dart';
+import 'package:money_manager/model/account_model.dart';
 import 'package:money_manager/pages/home_page.dart';
+import 'package:provider/provider.dart';
 
 class FingerprintPage extends StatefulWidget {
   const FingerprintPage({Key? key}) : super(key: key);
@@ -60,10 +64,20 @@ class _FingerprintPageState extends State<FingerprintPage> {
 
     if(!mounted) return;
 
-    setState(() {
+    setState(() async {
       //after the user is authenticated
       autherized = authenticated? "Autherization Successful" : "Failed to authenticate";
-      if(authenticated){
+      if(authenticated) {
+
+        // taking user info from the database
+        print('waiting for data...');
+        List<Map<String, dynamic>> userInfo = await DbHelper.instance.queryAll(tableUser);
+        print(userInfo);
+        var globalData = Provider.of<GlobalData>(context, listen: false);
+        globalData.nickName = userInfo[0]["nick_name"];
+        globalData.email = userInfo[0]["email"];
+        globalData.name = userInfo[0]["name"];
+
         Navigator.pushNamed(context, '/');
       }
       print(autherized);

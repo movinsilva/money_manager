@@ -6,10 +6,17 @@ class AccountFields {
   static final String email = 'email';
 }
 
-class AccountModel{
+class AccountModel {
   final String name;
   final String nickName;
   final String email;
 
-  AccountModel(this.name, this.nickName, this.email);
+  AccountModel(
+      {required this.name, required this.nickName, required this.email});
+
+  Map<String, Object?> toJson() => {
+    AccountFields.name: name,
+    AccountFields.nickName: nickName,
+    AccountFields.email: email
+  };
 }
