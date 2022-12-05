@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:money_manager/pages/categories_popup_card.dart';
+import 'package:money_manager/utilities/hero_dialog_route.dart';
 import 'package:money_manager/utilities/my_themes.dart';
 
 class AddTransaction extends StatelessWidget {
@@ -10,6 +12,9 @@ class AddTransaction extends StatelessWidget {
     Color themeColor = Theme.of(context).scaffoldBackgroundColor;
     Color mainColor = Theme.of(context).colorScheme.onBackground;
     Color txtColor = mainColor.withOpacity(0.6);
+
+    /// Tag-value used for the add todo popup button.
+    const String _heroCategorySelection = 'add-category-hero';
 
     double width = MediaQuery.of(context).size.width;
 
@@ -88,33 +93,48 @@ class AddTransaction extends StatelessWidget {
 
 
             SizedBox(height: 15,),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: MyThemes.tColor.withOpacity(0.1)
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.category_outlined, color: txtColor,),
-                  SizedBox(width: 20,),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            GestureDetector(
+              onTap: (){
+                Navigator.of(context).push(HeroDialogRoute(builder: (context) {
+                  return const CategoriesPopupCard(
+                  );
+                }));
+              },
+              child: Hero(
+                tag: _heroCategorySelection,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: MyThemes.tColor.withOpacity(0.1)
+                  ),
+                  child: Row(
                     children: [
-                      Text("Select Category",
-                        style: TextStyle(
-                          color: txtColor,
-                          fontSize: 16,
-                        ),),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        height: 0.5,
-                        width: width*0.65,
-                        color: txtColor,
+                      Icon(Icons.category_outlined, color: txtColor,),
+                      SizedBox(width: 20,),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            DefaultTextStyle(
+                              style: TextStyle(
+                                color: txtColor,
+                                fontSize: 16,
+                              ),
+                              child: Text("Select Category",)
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(top: 10),
+                              height: 0.5,
+                              width: width*0.65,
+                              color: txtColor,
+                            )
+                          ],
+                        ),
                       )
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
             ),
 
