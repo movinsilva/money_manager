@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../utilities/bottom_nav_info.dart';
 import '../utilities/my_themes.dart';
 
 
@@ -21,40 +23,65 @@ class _CategoriesPopupCardState extends State<CategoriesPopupCard> with TickerPr
       child: Hero(
         tag: "add-category-hero",
         child: SingleChildScrollView(
-          child: Container(
-            height: size.height*0.75,
-            width: size.width*0.8,
-            decoration: BoxDecoration(
-              color: Colors.black,
-            ),
-            child: Material(
-              color: MyThemes.tColor.withOpacity(0.1),
-              child: Column(
-                children: [
-                  TabBar(
-                    controller: _tabController,
-                    tabs: [
-                      Tab(
-                        text: "Expenses",
+          child: Stack(
+            children: [
+
+              Container(
+                height: size.height*0.75,
+                width: size.width*0.8,
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                ),
+                child: Material(
+                  color: MyThemes.tColor.withOpacity(0.1),
+                  child: Column(
+                    children: [
+                      TabBar(
+                        controller: _tabController,
+                        tabs: [
+                          Tab(
+                            text: "Expenses",
+                          ),
+                          Tab(
+                            text: "Income",
+                          ),
+                          Tab(
+                            text: "Debts/Loans",
+                          )
+                        ],
                       ),
-                      Tab(
-                        text: "Income",
-                      ),
-                      Tab(
-                        text: "Debts/Loans",
+                      Expanded(
+                        child: TabBarView(controller: _tabController, children: [
+                          tabItem(),
+                          Text("tab 2"),
+                          Text("tab 3"),
+                        ]),
                       )
                     ],
                   ),
-                  Expanded(
-                    child: TabBarView(controller: _tabController, children: [
-                      tabItem(),
-                      Text("tab 2"),
-                      Text("tab 3"),
-                    ]),
-                  )
-                ],
+                ),
               ),
-            ),
+              Positioned(
+                bottom: 15,
+                right: 15,
+                child: GestureDetector(
+                  onTap: () {
+                    var bottomNavInfo = Provider.of<BottomNavInfo>(context, listen: false);
+                    bottomNavInfo.updateSubIndex(1);
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    child: Center(child: Icon(Icons.add),),
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: MyThemes.tColor,
+                      borderRadius: BorderRadius.circular(50)
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:money_manager/data/pie_chart_data.dart';
+import 'package:money_manager/pages/add_category_page.dart';
 import 'package:money_manager/pages/add_transaction.dart';
 import 'package:money_manager/pages/dashboard_container.dart';
 import 'package:money_manager/pages/expect_container.dart';
@@ -65,9 +66,11 @@ Widget bottomNav(int i, int k) {
     case 2:
       switch (k) {
         case 1:
+          return AddCategoryPage();
+        default:
+          return AddTransaction();
 
       }
-      return AddTransaction();
     case 3:
       return ExpectContainer();
     case 4:
